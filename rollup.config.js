@@ -19,6 +19,18 @@ export default [
 		plugins: [...sharedPlugins],
 		treeshake: false,
 	},
+	// CJS: No bundle but WORKS
+	{
+		input: ['index-used.ts', 'namespace.ts'],
+		output: {
+			dir: 'lib-works',
+			format: 'cjs',
+			preserveModules: true,
+			interop: 'auto',
+		},
+		plugins: [...sharedPlugins],
+		treeshake: false,
+	},
 	// CJS: Bundled
 	{
 		input: 'index.ts',
@@ -36,6 +48,18 @@ export default [
 		input: ['index.ts', 'namespace.ts'],
 		output: {
 			dir: 'esm-preserve',
+			format: 'es',
+			preserveModules: true,
+			interop: 'auto',
+		},
+		plugins: [...sharedPlugins],
+		treeshake: false,
+	},
+	// ESM: No bundle but WORKS
+	{
+		input: ['index-used.ts', 'namespace.ts'],
+		output: {
+			dir: 'esm-works',
 			format: 'es',
 			preserveModules: true,
 			interop: 'auto',
