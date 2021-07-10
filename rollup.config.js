@@ -7,24 +7,50 @@ const sharedPlugins = [
 ];
 
 export default [
-	// No bundle
+	// CJS: No bundle
 	{
 		input: ['index.ts', 'namespace.ts'],
 		output: {
 			dir: 'lib-preserve',
 			format: 'cjs',
 			preserveModules: true,
+			interop: 'auto',
 		},
 		plugins: [...sharedPlugins],
 		treeshake: false,
 	},
-	// Bundled
+	// CJS: Bundled
 	{
 		input: 'index.ts',
 		output: {
 			dir: 'lib',
 			format: 'cjs',
 			preserveModules: false,
+			interop: 'auto',
+		},
+		plugins: [...sharedPlugins],
+		treeshake: false,
+	},
+	// ESM: No bundle
+	{
+		input: ['index.ts', 'namespace.ts'],
+		output: {
+			dir: 'esm-preserve',
+			format: 'es',
+			preserveModules: true,
+			interop: 'auto',
+		},
+		plugins: [...sharedPlugins],
+		treeshake: false,
+	},
+	// ESM: Bundled
+	{
+		input: 'index.ts',
+		output: {
+			dir: 'esm',
+			format: 'es',
+			preserveModules: false,
+			interop: 'auto',
 		},
 		plugins: [...sharedPlugins],
 		treeshake: false,
